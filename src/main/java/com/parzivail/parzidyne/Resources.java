@@ -15,6 +15,7 @@ public class Resources
 	public static final String VERSION = MAJOR + "." + MINOR + "." + PATCH;
 
 	private static int guiIdx = 1;
+	public static int GUI_RF = guiIdx++;
 
 	public static String itemDot(String name)
 	{
