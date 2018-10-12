@@ -1,0 +1,16 @@
+[
+{
+  "modid": "parzidyne",
+  "name": "Parzidyne",
+  "description": "Innovation, faster than light.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["parzivail"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
