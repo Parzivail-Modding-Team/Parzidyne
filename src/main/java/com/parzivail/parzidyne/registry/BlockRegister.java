@@ -1,7 +1,7 @@
 package com.parzivail.parzidyne.registry;
 
 import com.parzivail.parzidyne.Resources;
-import com.parzivail.parzidyne.block.BlockRF;
+import com.parzivail.parzidyne.block.BlockQuarry;
 import com.parzivail.util.block.*;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -14,7 +14,7 @@ public class BlockRegister
 
 	public static void register()
 	{
-		register(testRf = new BlockRF("testRf"));
+		register(testRf = new BlockQuarry("testRf"));
 	}
 
 	private static void register(PBlock item)

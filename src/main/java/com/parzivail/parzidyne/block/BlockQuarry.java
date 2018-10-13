@@ -2,15 +2,15 @@ package com.parzivail.parzidyne.block;
 
 import com.parzivail.parzidyne.Parzidyne;
 import com.parzivail.parzidyne.Resources;
-import com.parzivail.parzidyne.tile.TileRF;
+import com.parzivail.parzidyne.tile.TileQuarry;
 import com.parzivail.util.block.PBlockContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockRF extends PBlockContainer
+public class BlockQuarry extends PBlockContainer
 {
-	public BlockRF(String name)
+	public BlockQuarry(String name)
 	{
 		super(name);
 		setCreativeTab(Parzidyne.tab);
@@ -20,7 +20,7 @@ public class BlockRF extends PBlockContainer
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta)
 	{
-		return new TileRF(1000, 1, 1);
+		return new TileQuarry();
 	}
 
 	@Override
@@ -30,10 +30,10 @@ public class BlockRF extends PBlockContainer
 			return true;
 		else
 		{
-			TileRF tile = (TileRF)worldIn.getTileEntity(x, y, z);
+			TileQuarry tile = (TileQuarry)worldIn.getTileEntity(x, y, z);
 
 			if (tile != null)
-				player.openGui(Parzidyne.instance, Resources.GUI_RF, worldIn, x, y, z);
+				player.openGui(Parzidyne.instance, Resources.GUI_QUARRY, worldIn, x, y, z);
 
 			return true;
 		}

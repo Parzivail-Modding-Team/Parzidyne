@@ -9,25 +9,33 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileRF extends TileEntity implements IEnergyHandler
+public abstract class TileRF extends TileEntity implements IEnergyHandler
 {
 	public EnergyStorage energyStorage;
 
-	public TileRF(int capacity, int rxRate, int txRate)
+	public TileRF()
 	{
-		energyStorage = new EnergyStorage(capacity, rxRate, txRate);
+		energyStorage = createEnergyStorage();
 	}
+
+	protected abstract EnergyStorage createEnergyStorage();
 
 	@Override
 	public int receiveEnergy(ForgeDirection forgeDirection, int maxReceive, boolean simulate)
 	{
-		return energyStorage.receiveEnergy(maxReceive, simulate);
+		int x = energyStorage.receiveEnergy(maxReceive, simulate);
+		if (!simulate)
+			sync();
+		return x;
 	}
 
 	@Override
 	public int extractEnergy(ForgeDirection forgeDirection, int maxReceive, boolean simulate)
 	{
-		return energyStorage.extractEnergy(maxReceive, simulate);
+		int x = energyStorage.extractEnergy(maxReceive, simulate);
+		if (!simulate)
+			sync();
+		return x;
 	}
 
 	@Override
@@ -40,6 +48,8 @@ public class TileRF extends TileEntity implements IEnergyHandler
 	public void readFromNBT(NBTTagCompound nbt)
 	{
 		super.readFromNBT(nbt);
+		if (energyStorage == null)
+			energyStorage = createEnergyStorage();
 		energyStorage.readFromNBT(nbt);
 	}
 
@@ -54,6 +64,12 @@ public class TileRF extends TileEntity implements IEnergyHandler
 	public int getMaxEnergyStored(ForgeDirection forgeDirection)
 	{
 		return energyStorage.getMaxEnergyStored();
+	}
+
+	public void sync()
+	{
+		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+		markDirty();
 	}
 
 	@Override

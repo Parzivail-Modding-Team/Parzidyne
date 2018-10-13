@@ -97,7 +97,8 @@ public interface IEnergyTransport extends IEnergyProvider, IEnergyReceiver
 		/**
 		 * Returns the next InterfaceType as described in {@link IEnergyTransport#getTransportState}
 		 *
-		 * @param forward Whether to step in the order specified by {@link IEnergyTransport#getTransportState} (<tt>true</tt>) or to step in the opposite direction
+		 * @param forward
+		 *            Whether to step in the order specified by {@link IEnergyTransport#getTransportState} (<tt>true</tt>) or to step in the opposite direction
 		 */
 		public InterfaceType rotate(boolean forward)
 		{

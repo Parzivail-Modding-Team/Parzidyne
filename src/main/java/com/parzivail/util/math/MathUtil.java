@@ -81,4 +81,9 @@ public class MathUtil
 	{
 		return Math.round(x / nearest) * nearest;
 	}
+
+	public static boolean rectContains(int x, int y, int w, int h, int qx, int qy)
+	{
+		return qx >= x && qx <= x + w && qy >= y && qy <= y + h;
+	}
 }

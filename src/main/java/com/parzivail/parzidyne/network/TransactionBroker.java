@@ -1,6 +1,7 @@
 package com.parzivail.parzidyne.network;
 
 import com.parzivail.parzidyne.Parzidyne;
+import com.parzivail.parzidyne.network.transaction.TransactionToggleQuarry;
 import net.minecraft.nbt.NBTTagCompound;
 
 import java.util.HashMap;
@@ -11,7 +12,7 @@ public class TransactionBroker
 
 	static
 	{
-		//		register(TransactionDeductCredits.class);
+		register(TransactionToggleQuarry.class);
 	}
 
 	private static void register(Class<? extends Transaction> t)
