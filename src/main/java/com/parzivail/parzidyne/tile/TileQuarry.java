@@ -11,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.IFluidBlock;
@@ -67,22 +66,9 @@ public class TileQuarry extends TileRF
 				sync();
 			}
 
-			int progressiveScanIdx = mineIndex;
-			if (mineY % 2 == 0)
-				progressiveScanIdx = 255 - progressiveScanIdx;
-
-			int x = progressiveScanIdx % 16;
-			int z = 15 - (int)Math.floor(progressiveScanIdx / 16f);
-
-			if (z % 2 == 0)
-				x = 15 - x;
-
-			Chunk thisChunk = this.worldObj.getChunkFromBlockCoords(this.xCoord, this.zCoord);
-			if (thisChunk == null)
-				return;
-
-			int mineX = thisChunk.xPosition * 16 + x;
-			int mineZ = thisChunk.zPosition * 16 + z;
+			Vector3f target = getTarget();
+			int mineX = (int)target.x;
+			int mineZ = (int)target.z;
 
 			Block block = this.worldObj.getBlock(mineX, mineY, mineZ);
 			int metadata = this.worldObj.getBlockMetadata(mineX, mineY, mineZ);
