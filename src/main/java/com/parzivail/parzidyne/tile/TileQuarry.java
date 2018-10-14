@@ -10,10 +10,12 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.IFluidBlock;
+import org.lwjgl.util.vector.Vector3f;
 
 import java.util.ArrayList;
 
@@ -42,10 +44,8 @@ public class TileQuarry extends TileRF
 		if (worldObj.isRemote)
 			return;
 
-		if (mining && ticksUntilNextMine-- <= 0)
+		if (mining && canMine() && ticksUntilNextMine-- <= 0)
 		{
-			if (extractEnergy(null, 500, true) != 500)
-				return;
 
 			mineIndex++;
 
@@ -97,7 +97,7 @@ public class TileQuarry extends TileRF
 
 			distributeDrops(mineX, mineZ, block, metadata);
 
-			ticksUntilNextMine = 1;
+			ticksUntilNextMine = 2;
 		}
 	}
 
@@ -170,5 +170,34 @@ public class TileQuarry extends TileRF
 	public int getLayer()
 	{
 		return mineY;
+	}
+
+	public Vector3f getTarget()
+	{
+		int progressiveScanIdx = mineIndex;
+		if (mineY % 2 == 0)
+			progressiveScanIdx = 255 - progressiveScanIdx;
+
+		int x = progressiveScanIdx % 16;
+		int z = 15 - (int)Math.floor(progressiveScanIdx / 16f);
+
+		if (z % 2 == 0)
+			x = 15 - x;
+
+		int mineX = (int)Math.floor(this.xCoord / 16f) * 16 + x;
+		int mineZ = (int)Math.floor(this.zCoord / 16f) * 16 + z;
+
+		return new Vector3f(mineX, mineY, mineZ);
+	}
+
+	@Override
+	public AxisAlignedBB getRenderBoundingBox()
+	{
+		return INFINITE_EXTENT_AABB;
+	}
+
+	public boolean canMine()
+	{
+		return extractEnergy(null, 500, true) == 500;
 	}
 }
