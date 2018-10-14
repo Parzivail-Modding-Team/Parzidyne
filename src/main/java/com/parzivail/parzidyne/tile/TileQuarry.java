@@ -22,9 +22,13 @@ public class TileQuarry extends TileRF
 {
 	private final GenericInventory inventory = new GenericInventory("dummy", false, 1);
 	private boolean mining;
+	private boolean wasMining;
 	private int ticksUntilNextMine;
 	private int mineIndex;
 	private int mineY = 255;
+
+	private int mineWidth = 16;
+	private int mineDepth = 16;
 
 	public boolean isMining()
 	{
@@ -45,8 +49,12 @@ public class TileQuarry extends TileRF
 
 		if (mining && canMine() && ticksUntilNextMine-- <= 0)
 		{
-
 			mineIndex++;
+
+			if (!wasMining)
+			{
+				// TODO: top-downs search for first block to start mining
+			}
 
 			if (mineY >= yCoord)
 				mineY = yCoord - 1;
@@ -84,6 +92,7 @@ public class TileQuarry extends TileRF
 			distributeDrops(mineX, mineZ, block, metadata);
 
 			ticksUntilNextMine = 2;
+			wasMining = mining;
 		}
 	}
 
