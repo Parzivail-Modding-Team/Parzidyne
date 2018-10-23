@@ -25,4 +25,9 @@ public class ItemUtils
 			return tag;
 		return new NBTTagCompound();
 	}
+
+	public static boolean areStacksEqualIgnoreNbt(ItemStack a, ItemStack b)
+	{
+		return b.getItem() == a.getItem() && b.getMetadata() == a.getMetadata();
+	}
 }

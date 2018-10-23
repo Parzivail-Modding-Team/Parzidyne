@@ -10,11 +10,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 public class BlockRegister
 {
-	public static PBlockContainer testRf;
+	public static PBlockContainer quarry;
 
 	public static void register()
 	{
-		register(testRf = new BlockQuarry("testRf"));
+		register(quarry = new BlockQuarry());
 	}
 
 	private static void register(PBlock item)

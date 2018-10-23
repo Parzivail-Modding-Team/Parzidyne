@@ -10,9 +10,9 @@ import net.minecraft.world.World;
 
 public class BlockQuarry extends PBlockContainer
 {
-	public BlockQuarry(String name)
+	public BlockQuarry()
 	{
-		super(name);
+		super("quarry");
 		setCreativeTab(Parzidyne.tab);
 		withPlaceholderTexture();
 	}

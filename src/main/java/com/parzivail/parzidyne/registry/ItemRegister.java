@@ -13,9 +13,35 @@ public class ItemRegister
 {
 	public static PItem debugWizard;
 
+	public static PItem carbonFiber;
+	public static PItem carbonFiberComposite;
+
+	public static PItem scrap;
+
+	public static PItem magnesiumSalt;
+
+	public static PItem tungsten;
+	public static PItem magnesium;
+
+	public static PItem tungstenMagnesiumAlloy;
+	public static PItem tungstenCarbideAlloy;
+
 	public static void register()
 	{
 		register(debugWizard = new ItemDebugWizard());
+
+		register(carbonFiber = new PItem("carbonFiber"));
+		register(carbonFiberComposite = new PItem("carbonFiberComposite"));
+
+		register(scrap = new PItem("scrap"));
+
+		register(magnesiumSalt = new PItem("magnesiumSalt"));
+
+		register(tungsten = new PItem("tungsten"));
+		register(magnesium = new PItem("magnesium"));
+
+		register(tungstenMagnesiumAlloy = new PItem("tungstenMagnesiumAlloy"));
+		register(tungstenCarbideAlloy = new PItem("tungstenCarbideAlloy"));
 	}
 
 	private static void register(PItem item)
