@@ -6,6 +6,8 @@ import cpw.mods.fml.common.gameevent.InputEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.event.terraingen.PopulateChunkEvent;
+import net.minecraftforge.event.terraingen.TerrainGen;
 
 /**
  * Created by colby on 9/13/2017.
@@ -34,5 +36,11 @@ public class EventHandler
 	public void on(InputEvent.MouseInputEvent event)
 	{
 		KeyHandler.onInput(event);
+	}
+
+	@SubscribeEvent
+	public void populate(PopulateChunkEvent.Post event)
+	{
+		final boolean doGen = TerrainGen.populate(event.chunkProvider, event.world, event.rand, event.chunkX, event.chunkZ, event.hasVillageGenerated, PopulateChunkEvent.Populate.EventType.CUSTOM);
 	}
 }

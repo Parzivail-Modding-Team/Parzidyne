@@ -5,6 +5,7 @@ import com.parzivail.parzidyne.item.ItemDebugWizard;
 import com.parzivail.parzidyne.item.PItem;
 import com.parzivail.parzidyne.item.PItemFood;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 
 /**
  * Created by colby on 12/26/2017.
@@ -42,6 +43,9 @@ public class ItemRegister
 
 		register(tungstenMagnesiumAlloy = new PItem("tungstenMagnesiumAlloy"));
 		register(tungstenCarbideAlloy = new PItem("tungstenCarbideAlloy"));
+
+		OreDictionary.registerOre("ingotTungsten", tungsten);
+		OreDictionary.registerOre("ingotMagnesium", magnesium);
 	}
 
 	private static void register(PItem item)
