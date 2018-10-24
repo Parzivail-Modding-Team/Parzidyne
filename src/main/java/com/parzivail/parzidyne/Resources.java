@@ -16,6 +16,7 @@ public class Resources
 
 	private static int guiIdx = 1;
 	public static int GUI_QUARRY = guiIdx++;
+	public static int GUI_COMPRESSOR = guiIdx++;
 
 	public static String itemDot(String name)
 	{

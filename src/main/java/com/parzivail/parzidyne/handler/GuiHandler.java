@@ -15,6 +15,8 @@ public class GuiHandler implements IGuiHandler
 	{
 		if (id == Resources.GUI_QUARRY)
 			return new GuiQuarry(player.inventory, (TileQuarry)world.getTileEntity(x, y, z));
+		if (id == Resources.GUI_COMPRESSOR)
+			return new GuiQuarry(player.inventory, (TileQuarry)world.getTileEntity(x, y, z));
 		return null;
 	}
 
