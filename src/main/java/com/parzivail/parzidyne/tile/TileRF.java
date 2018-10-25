@@ -30,9 +30,9 @@ public abstract class TileRF extends TileEntity implements IEnergyHandler
 	}
 
 	@Override
-	public int extractEnergy(ForgeDirection forgeDirection, int maxReceive, boolean simulate)
+	public int extractEnergy(ForgeDirection forgeDirection, int maxExtract, boolean simulate)
 	{
-		int x = energyStorage.extractEnergy(maxReceive, simulate);
+		int x = energyStorage.extractEnergy(maxExtract, simulate);
 		if (!simulate)
 			sync();
 		return x;
@@ -68,8 +68,8 @@ public abstract class TileRF extends TileEntity implements IEnergyHandler
 
 	public void sync()
 	{
-		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		markDirty();
+		this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public abstract class TileRF extends TileEntity implements IEnergyHandler
 	public Packet getDescriptionPacket()
 	{
 		NBTTagCompound tag = new NBTTagCompound();
-		writeToNBT(tag);
+		energyStorage.writeToNBT(tag);
 		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 0, tag);
 	}
 
@@ -90,6 +90,8 @@ public abstract class TileRF extends TileEntity implements IEnergyHandler
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet)
 	{
 		super.onDataPacket(net, packet);
-		readFromNBT(packet.getNbtCompound());
+		if (energyStorage == null)
+			energyStorage = createEnergyStorage();
+		energyStorage.readFromNBT(packet.getNbtCompound());
 	}
 }

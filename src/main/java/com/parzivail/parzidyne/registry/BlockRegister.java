@@ -1,6 +1,7 @@
 package com.parzivail.parzidyne.registry;
 
 import com.parzivail.parzidyne.Resources;
+import com.parzivail.parzidyne.block.BlockCompressor;
 import com.parzivail.parzidyne.block.BlockQuarry;
 import com.parzivail.util.block.*;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -11,6 +12,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class BlockRegister
 {
 	public static PBlockContainer quarry;
+	public static PBlockContainer compressor;
 
 	public static PBlock tungstenOre;
 	public static PBlock magnesiumOre;
@@ -23,6 +25,7 @@ public class BlockRegister
 	public static void register()
 	{
 		register(quarry = new BlockQuarry());
+		register(compressor = new BlockCompressor());
 
 		register(tungstenOre = new PBlock("tungstenOre"));
 		register(magnesiumOre = new PBlock("magnesiumOre"));

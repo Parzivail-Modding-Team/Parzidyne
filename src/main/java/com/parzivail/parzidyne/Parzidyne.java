@@ -6,10 +6,7 @@ import com.parzivail.parzidyne.handler.GuiHandler;
 import com.parzivail.parzidyne.network.MessageSpawnParticle;
 import com.parzivail.parzidyne.network.MessageTransaction;
 import com.parzivail.parzidyne.proxy.Common;
-import com.parzivail.parzidyne.registry.BlockRegister;
-import com.parzivail.parzidyne.registry.EntityRegister;
-import com.parzivail.parzidyne.registry.ItemRegister;
-import com.parzivail.parzidyne.registry.WorldRegister;
+import com.parzivail.parzidyne.registry.*;
 import com.parzivail.parzidyne.tab.PTab;
 import com.parzivail.util.common.Lumberjack;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -100,6 +97,7 @@ public class Parzidyne
 
 		ItemRegister.register();
 		BlockRegister.register();
+		CraftingRegistry.register();
 		WorldRegister.register();
 		EntityRegister.register();
 

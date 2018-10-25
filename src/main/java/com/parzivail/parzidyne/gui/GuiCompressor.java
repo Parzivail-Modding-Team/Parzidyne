@@ -56,11 +56,20 @@ public class GuiCompressor extends GuiContainer
 	 */
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
-		String machine = I18n.format(Resources.guiDot("compressor.name"));
+		String machine = I18n.format(tile.getInventoryName());
 		this.fontRendererObj.drawString(machine, this.xSize / 2 - this.fontRendererObj.getStringWidth(machine) / 2, 6, GLPalette.ALMOST_BLACK);
 
 		String inventory = I18n.format("container.inventory");
 		fontRendererObj.drawString(inventory, 7, 87, 0x0D0D0D);
+
+		this.mc.getTextureManager().bindTexture(guiTexture);
+		GL.Color(GLPalette.WHITE);
+
+		if (this.tile.progress > 0)
+		{
+			int scaledProgress = (int)(this.tile.progress / 200f * 41);
+			this.drawTexturedModalRect(67, 33, 176, 0, scaledProgress + 1, 28);
+		}
 
 		String rfString = String.format("%d RF", tile.getEnergyStored(null));
 
