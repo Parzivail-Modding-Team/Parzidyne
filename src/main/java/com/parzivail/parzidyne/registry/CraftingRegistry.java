@@ -3,21 +3,21 @@ package com.parzivail.parzidyne.registry;
 import com.parzivail.parzidyne.registry.recipe.CentrifugeRecipes;
 import com.parzivail.parzidyne.registry.recipe.CompressorRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class CraftingRegistry
 {
 	public static void register()
 	{
-		addCompressor(new ItemStack(ItemRegister.carbonFiberComposite, 8), new ItemStack(ItemRegister.carbonFiber));
-		addCompressor(new ItemStack(Blocks.coal_block, 16), new ItemStack(Items.diamond));
+		addCompressor(new ItemStack(ItemRegister.carbonFiberMesh), new ItemStack(ItemRegister.carbonFiber));
+		//addCompressor(new ItemStack(Blocks.coal_block), new ItemStack(Items.diamond));
 
 		GameRegistry.addShapedRecipe(new ItemStack(BlockRegister.tungstenBlock), "XXX", "XXX", "XXX", 'X', ItemRegister.tungsten);
 		GameRegistry.addShapedRecipe(new ItemStack(BlockRegister.magnesiumBlock), "XXX", "XXX", "XXX", 'X', ItemRegister.magnesium);
 		GameRegistry.addShapedRecipe(new ItemStack(BlockRegister.tungstenCarbideBlock), "XXX", "XXX", "XXX", 'X', ItemRegister.tungstenCarbideAlloy);
 		GameRegistry.addShapedRecipe(new ItemStack(BlockRegister.tungstenMagnesiumBlock), "XXX", "XXX", "XXX", 'X', ItemRegister.tungstenMagnesiumAlloy);
+
+		GameRegistry.addShapedRecipe(new ItemStack(ItemRegister.carbonFiberMesh), "XXX", "XXX", "XXX", 'X', ItemRegister.carbonFiberComposite);
 
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegister.tungsten, 9), BlockRegister.tungstenBlock);
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegister.magnesium, 9), BlockRegister.magnesiumBlock);

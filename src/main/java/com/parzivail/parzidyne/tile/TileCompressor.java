@@ -248,7 +248,7 @@ public class TileCompressor extends TileRF implements ISidedInventory
 				this.items[0] = null;
 			}
 
-			this.extractEnergy(null, 999, false);
+			this.extractEnergy(null, 200, false);
 		}
 	}
 
