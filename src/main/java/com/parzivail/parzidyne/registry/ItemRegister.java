@@ -15,6 +15,7 @@ public class ItemRegister
 	public static PItem debugWizard;
 
 	public static PItem carbonFiber;
+	public static PItem untreatedCarbonFiber;
 	public static PItem carbonFiberComposite;
 	public static PItem carbonFiberMesh;
 
@@ -33,6 +34,7 @@ public class ItemRegister
 		register(debugWizard = new ItemDebugWizard());
 
 		register(carbonFiber = new PItem("carbonFiber"));
+		register(untreatedCarbonFiber = new PItem("untreatedCarbonFiber"));
 		register(carbonFiberComposite = new PItem("carbonFiberComposite"));
 		register(carbonFiberMesh = new PItem("carbonFiberMesh"));
 

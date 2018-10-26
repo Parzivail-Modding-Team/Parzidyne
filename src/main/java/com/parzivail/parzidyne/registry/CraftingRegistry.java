@@ -3,6 +3,7 @@ package com.parzivail.parzidyne.registry;
 import com.parzivail.parzidyne.registry.recipe.CentrifugeRecipes;
 import com.parzivail.parzidyne.registry.recipe.CompressorRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class CraftingRegistry
@@ -17,7 +18,9 @@ public class CraftingRegistry
 		GameRegistry.addShapedRecipe(new ItemStack(BlockRegister.tungstenCarbideBlock), "XXX", "XXX", "XXX", 'X', ItemRegister.tungstenCarbideAlloy);
 		GameRegistry.addShapedRecipe(new ItemStack(BlockRegister.tungstenMagnesiumBlock), "XXX", "XXX", "XXX", 'X', ItemRegister.tungstenMagnesiumAlloy);
 
+		GameRegistry.addShapedRecipe(new ItemStack(ItemRegister.untreatedCarbonFiber), "X X", " X ", "X X", 'X', Items.coal);
 		GameRegistry.addShapedRecipe(new ItemStack(ItemRegister.carbonFiberMesh), "XXX", "XXX", "XXX", 'X', ItemRegister.carbonFiberComposite);
+		GameRegistry.addSmelting(new ItemStack(ItemRegister.untreatedCarbonFiber), new ItemStack(ItemRegister.carbonFiberComposite), 0.35f);
 
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegister.tungsten, 9), BlockRegister.tungstenBlock);
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegister.magnesium, 9), BlockRegister.magnesiumBlock);
