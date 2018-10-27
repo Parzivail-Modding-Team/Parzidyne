@@ -380,8 +380,6 @@ public class Fx
 	public static class D3
 	{
 		private static final double[][] _vertsBox = new double[8][3];
-		private static double[][] _vertsBoxSkew;
-
 		private static final double[][] _normalsBox = {
 				{ -1.0, 0.0, 0.0 },
 				{ 0.0, 1.0, 0.0 },
@@ -390,12 +388,11 @@ public class Fx
 				{ 0.0, 0.0, 1.0 },
 				{ 0.0, 0.0, -1.0 }
 		};
-
 		private static final int[][] _facesBox = {
 				{ 0, 1, 2, 3 }, { 3, 2, 6, 7 }, { 7, 6, 5, 4 }, { 4, 5, 1, 0 }, { 5, 6, 2, 1 }, { 7, 4, 0, 3 }
 		};
-
 		private static final double[][] _dodec = new double[20][3];
+		private static double[][] _vertsBoxSkew;
 
 		static
 		{
